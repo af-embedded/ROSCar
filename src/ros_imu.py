@@ -7,13 +7,14 @@ from tf.transformations import quaternion_from_euler
 from IMU import IMU
 
 FRAME_ID = "imu_link"
+PUB_TOPIC = "/imu/data"
 # imu.orientation_covariance = {0.0025, 0, 0, 0, 0.0025, 0, 0, 0, 0.0025};
 # imu.angular_velocity_covariance = {0.0025, 0, 0, 0, 0.0025, 0, 0, 0, 0.0025};
 # imu.linear_acceleration_covariance = {0.0025, 0, 0, 0, 0.0025, 0, 0, 0, 0.0025};
 
 class IMUMessage:
     def __init__(self):
-        self.odom_pub = rospy.Publisher(FRAME_ID, Odometry, queue_size=50)
+        self.odom_pub = rospy.Publisher(PUB_TOPIC, Odometry, queue_size=50)
         # self.odom_broadcaster = tf.TransformBroadcaster()
 
         self.imu = IMU()

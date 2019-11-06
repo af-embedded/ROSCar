@@ -5,11 +5,11 @@ from nav_msgs.msg import Odometry
 from wheel_encoder import WheelEncoder
 
 FRAME_ID = "odom"
-
+PUB_TOPIC = "/wheel_encoder_odom"
 
 class Encoder:
     def __init__(self):
-        self.odom_pub = rospy.Publisher(FRAME_ID, Odometry, queue_size=50)
+        self.odom_pub = rospy.Publisher(PUB_TOPIC, Odometry, queue_size=50)
         # self.odom_broadcaster = tf.TransformBroadcaster()
 
         self.we = WheelEncoder()
